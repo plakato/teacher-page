@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "node deploy.js",
     "watch-css": "node-sass -w sass/ -o css/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "fs-extra": "^7.0.0",
+    "ftp-deploy": "^2.1.3",
     "node-sass": "^4.9.3"
   }
 }
