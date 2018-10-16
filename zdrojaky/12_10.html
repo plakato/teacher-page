@@ -1,0 +1,123 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/prism.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program HelloWorld_pa;
+
+begin
+
+  writeln('Vitejte na programovani !!!');
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Promenne_pa;
+
+var cislo, dalsi: byte;
+    desetinne: real;
+    pismeno: char;
+
+begin
+
+  cislo := 50;
+  dalsi := 77;
+  desetinne := 0.3;
+  pismeno := 'm';
+
+  writeln(cislo);
+  writeln(dalsi, pismeno, desetinne:0:6);
+  dalsi := 2 * dalsi - cislo;
+  writeln(dalsi);
+
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Scitan_pa;
+
+var a, b, c: word;
+
+begin
+
+  writeln('Zadejte prvni cislo: ');
+  readln(a);
+  writeln('Zadejte druhe cislo: ');
+  readln(b);
+  c := a + b;
+  writeln('Vysledek je: ');
+  writeln(c);
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Nasobeni_pa;
+
+var a, b, c: longint;
+
+begin
+
+  writeln('Zadejte dvojici celych cisel oddelenou mezerou: ');
+  readln(a, b);
+  c := a * b;
+  writeln('Vypocet: ');
+  writeln(a, ' x ', b, ' = ', c);
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Deleni;
+
+var delenec, delitel, podil, zbytek: longint;
+    realny: real;
+
+
+begin
+
+  writeln('Zadejte dvojici celych cisel oddelenou mezerou: ');
+  readln(delenec, delitel);
+
+  podil := delenec div delitel;
+  zbytek := delenec mod delitel;
+  writeln('Deleni ala zakladni skola: ');
+  writeln(delenec, ' : ', delitel, ' = ', podil, ' (', zbytek, ')');
+
+  realny := delenec / delitel;
+  writeln('Realny podil: ');
+  writeln(realny:0:3);
+
+  readln;
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

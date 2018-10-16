@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 if( fs.existsSync('dist') ){
   //fs.removeSync('dist');
 }
-const files_and_folders_to_deploy = ["index.html", "images", "css"];
+const files_and_folders_to_deploy = ["index.html", "images", "css", "js", "zdrojaky"];
 
 const files_copying = files_and_folders_to_deploy.map(f => fs.copy(f, 'dist/'+f));
 

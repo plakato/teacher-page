@@ -50,6 +50,7 @@ body{
   }
   .page-content{
     margin: 0 20px;
+    padding-bottom: 20px;
     &>section{
       padding: 10px 0;
       border-bottom: 1px solid rgb(231, 231, 231);
@@ -64,7 +65,14 @@ body{
     .class-content{
       section{
         margin-left: 20px;
-        border-bottom: 1px solid rgb(231, 231, 231);      
+        &:not(:last-child){
+          border-bottom: 1px solid rgb(231, 231, 231);     
+        }
+        .homework{
+          background: rgb(230, 230, 230);
+          padding: 0px 20px;
+          display: inline-block;
+        } 
       }
     }
   }
