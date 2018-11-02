@@ -21,7 +21,7 @@ function getZdrojakyTemplate(zdrojaky) {
   zdrojaky = zdrojaky.map(zdrojak => {
     return `
     <pre class="line-numbers">
-      <code class="language-pascal">${zdrojak}</code>
+      <code class="language-pascal">${escapeHtml(zdrojak)}</code>
     </pre>
     `;
   });
@@ -43,4 +43,17 @@ function getZdrojakyTemplate(zdrojaky) {
     <script src="../js/prism.js"></script>
   </body>
   </html>`
+}
+
+
+function escapeHtml(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }

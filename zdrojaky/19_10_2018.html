@@ -1,0 +1,123 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/prism.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program indikator_nastvanosti;
+        var
+          ch: char;
+          velke: integer;
+begin
+  read(ch);
+  velke :=0;
+
+  while(ch &lt;&gt; &#039;.&#039;) do
+  begin
+       if (ch &gt;= &#039;A&#039;) and (ch &lt;= &#039;Z&#039;) then
+        begin
+           inc(velke);
+        end;
+       read(ch);
+  end;
+
+  writeln(&#039;Napisali ste &#039;, velke, &#039; velkych pismen&#039;); 
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program interval;
+        var
+          a, b, c, i: integer;
+begin
+  readln(a,b);
+  c:=0;
+
+  if (b&lt;a) then
+  begin
+     c := a;
+     a := b;
+     b := c;
+  end;
+
+  for i:=a to b do
+  writeln(i);
+
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program kvadranty;
+
+var x,y: real;
+
+begin
+  readln(x,y);
+
+  if (x=0) or (y=0) then
+  writeln(&#039;Bod je na osi.&#039;);
+
+
+  if (x&gt;0) then
+  begin
+    if (y&gt;0) then
+       writeln(&#039;1.kvadrant&#039;)
+    else
+      writeln(&#039;4.kvadrant&#039;);
+  end else
+  begin
+    if (y&gt;0) then
+       writeln(&#039;2.kvadrant&#039;)
+    else
+      writeln(&#039;3.kvadrant&#039;);
+  end;
+
+  Readln();
+
+
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program prestupny;
+
+var
+rok: integer;
+
+begin
+  readln(rok);
+  if ((rok mod 4 = 0) and (rok mod 400 = 0)) or
+     ((rok mod 4 = 0) and (rok mod 100 &lt;&gt; 0)) then
+  writeln(&#039;je prestpny&#039;)
+  else
+  writeln(&#039;nie je prestupny&#039;);
+
+
+  readln;
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

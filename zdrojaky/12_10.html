@@ -16,7 +16,7 @@
 
 begin
 
-  writeln('Vitejte na programovani !!!');
+  writeln(&#039;Vitejte na programovani !!!&#039;);
   readln;
 
 end.
@@ -36,7 +36,7 @@ begin
   cislo := 50;
   dalsi := 77;
   desetinne := 0.3;
-  pismeno := 'm';
+  pismeno := &#039;m&#039;;
 
   writeln(cislo);
   writeln(dalsi, pismeno, desetinne:0:6);
@@ -57,12 +57,12 @@ var a, b, c: word;
 
 begin
 
-  writeln('Zadejte prvni cislo: ');
+  writeln(&#039;Zadejte prvni cislo: &#039;);
   readln(a);
-  writeln('Zadejte druhe cislo: ');
+  writeln(&#039;Zadejte druhe cislo: &#039;);
   readln(b);
   c := a + b;
-  writeln('Vysledek je: ');
+  writeln(&#039;Vysledek je: &#039;);
   writeln(c);
   readln;
 
@@ -78,11 +78,11 @@ var a, b, c: longint;
 
 begin
 
-  writeln('Zadejte dvojici celych cisel oddelenou mezerou: ');
+  writeln(&#039;Zadejte dvojici celych cisel oddelenou mezerou: &#039;);
   readln(a, b);
   c := a * b;
-  writeln('Vypocet: ');
-  writeln(a, ' x ', b, ' = ', c);
+  writeln(&#039;Vypocet: &#039;);
+  writeln(a, &#039; x &#039;, b, &#039; = &#039;, c);
   readln;
 
 end.
@@ -99,16 +99,16 @@ var delenec, delitel, podil, zbytek: longint;
 
 begin
 
-  writeln('Zadejte dvojici celych cisel oddelenou mezerou: ');
+  writeln(&#039;Zadejte dvojici celych cisel oddelenou mezerou: &#039;);
   readln(delenec, delitel);
 
   podil := delenec div delitel;
   zbytek := delenec mod delitel;
-  writeln('Deleni ala zakladni skola: ');
-  writeln(delenec, ' : ', delitel, ' = ', podil, ' (', zbytek, ')');
+  writeln(&#039;Deleni ala zakladni skola: &#039;);
+  writeln(delenec, &#039; : &#039;, delitel, &#039; = &#039;, podil, &#039; (&#039;, zbytek, &#039;)&#039;);
 
   realny := delenec / delitel;
-  writeln('Realny podil: ');
+  writeln(&#039;Realny podil: &#039;);
   writeln(realny:0:3);
 
   readln;
