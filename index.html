@@ -33,7 +33,7 @@
     <div class="page-content">
       <section id="uvod">
         <h2>Cvičenie k prednáške Programování I (NMIN101)</h2>
-        <p>Toto je stránka k cvičeniu, ktoré sa koná v zimnom semestri 2018 každý piatok o 12:20 v K11 na Karlíne (Sokolovská 49/83).</p>
+        <p>Toto je stránka k cvičeniu, ktoré sa koná v zimnom semestri 2018/2019 každý piatok o 12:20 v K11 na Karlíne (Sokolovská 49/83).</p>
       </section>
       
       <section id="podmienky-zapoctu">
@@ -103,7 +103,9 @@
 
         <section>
           <h4>26.10.2018</h4>
-          <p>Budeme opakovať cykly a začneme s poľom. ÚLohy na dnes:
+          <p>Opakovali sme cykly. Skúsili sme programovať využívajúc programy, ktoré už máme hotové a tak ľahšie 
+            dôjsť k zložitejšej úlohe cez jednoduchšie problémy.
+            Urobili sme jednoduchú úlohu na pole. Úlohy:
           </p>
           <h5>* Rozcvička - Hádaj na čo myslím...</h5>
           <p>Napíšte hru, kde si počítač bude "myslieť" číslo a užívateľ ho bude hádať. Počítač sa spýta užívateľa na 
@@ -125,10 +127,7 @@
           <h5>* Palindróm </h5>
           <p>Napíšte program, ktorý na vstupe dostane 5 znakov oddelených medzerou a na výstup ich vypíše 2x aby vytvorili palindróm.
           </p>
-          <!--<h5>* Merge </h5>
-          <p>Napíšte program, ktorý na vstupe dostane na dvoch riadkoch dve rôzne 10-tice celých čísel oddelených medzerami (každá usporiadaná od najmenšieho po najväčšie) a 
-            na výstup vypíše pole, ktoré vzniklo spojením týchto dvoch tiež tak, aby bolo usporiadané od najmenšieho.
-          </p> -->
+
           <p><a href="zdrojaky/26_10_2018.html">Zdrojáky z hodiny</a></p>
           <div class="homework">
             <h5>Domáca úloha (deadline štvrtok 1.11. 23:59)</h5>
@@ -138,19 +137,66 @@
         
         <section>
           <h4>2.11.2018</h4>
-          <p>Vysvetlíme si debugovanie. Dáme 1 zložitejšiu úlohu na cykly a pár jednoduchších na pole.
+          <p>Vysvetlili sme si debugovanie. Ukázala som zastavenie na breakpointe, krokovanie po riadkoch a 
+            sledovanie hodnôt premenných. Urobili sme 1 zložitú úlohu na cykly. Skúšali sme sa viac hrať s poľami.
           </p>
-
-          <!--<h5>* Merge </h5>
+          <h5>** Cik-cak </h5>
+          <p>Vytvorte program, ktorý bude vypisovať vertikálny cik-cak vzor. Na začiatku ako vstup načíta prirodzené číslo, ktoré bude určovať šírku vzoru. 
+            Následne po stlačení tlačidla Enter vypíše jeden riadok o zadanej šírke so znakom ‘*’ úplne vľavo. Po ďalšom stlačení už bude ‘*’ posunuté o jeden znak 
+            vpravo, atď. Keď ‘*’ dôjde na pravý okraj, začne vracať doľava a tak dookola. Pri konštantnom držaní Enteru sa potom pred vami bude kresliť krásny cik-cak.
+          </p>
+          <p> 
+            Pro-tip: Miesto ‘*’ skúste vypisovať ‘\’ pri ceste vpravo a ‘/’ pri ceste vľavo -> výsledok bude ešte o niečo krajší :)
+          </p>
+          <h5>* Merge </h5>
           <p>Napíšte program, ktorý na vstupe dostane na dvoch riadkoch dve rôzne 10-tice celých čísel oddelených medzerami (každá usporiadaná od najmenšieho po najväčšie) a 
             na výstup vypíše pole, ktoré vzniklo spojením týchto dvoch tiež tak, aby bolo usporiadané od najmenšieho.
-          </p> -->
-          <div class="homework">
-            <h5>Domáca úloha (deadline štvrtok 1.11. 23:59)</h5>
-            <p>V ReCodexe je zadaná úloha naj</p>        
+          </p>
+           <div class="homework">
+            <h5>Domáca úloha (deadline štvrtok 8.11. 23:59)</h5>
+            <p>V ReCodexe je zadaná úloha Nejdelší rostoucí podposloupnost - bude za 6 bodov.</p>        
           </div>
         </section>
 
+        <section>
+            <h4>9.11.2018</h4>
+            <p>Budeme precvičovať ďalšie úlohy na polia. Dovysvetlíme si merge z minulého týždňa.
+            </p>
+            <h5>* Párne vs nepárne </h5>
+            <p>Na vstupe dostanete 50 prvkov a vašou úlohou je vypísať zvlášť na jednom riadku všetky párne (sudé) a na ďalšom všetky nepárne (liché).
+             </p>
+             <p>
+               Príklad vstupu: 46 4 58 56 68 84 60 2 21 14 6 16 69 99 29 14 37 27 100 89 76 64 99 3 89 98 51 57 98 11 33 7 56 74 8 27 59 52 71 63 99 79 89 75 90 31 84 57 1 45
+            </p>
+            <!--<h5>** Zalievanie</h5>
+            <p>Zahrajte sa na záhradníka. Na okne máte 10 rastliniek a každá potrebuje iné množstvo vody. 
+              Váš program na začiatku pre každú rastlinku vygeneruje koľko vody vypije za deň pomocou príkazu Random(50+1). Tieto hodnoty vypíše na obrazovku. 
+              Potom bude simulovať život týchto rastliniek následovne.</p>
+              <ul>
+                <li>
+                    Na začiatku je každá rastlinka zaliata 100 litrami vody :)
+                    Príklad: 100 100 100 100 100 100 100 100 100 100                  
+                </li>
+                <li>
+                    Program vypíše stav rastliniek po jednom dni podľa toho, ktorá koľko vypije:
+                    Príklad: 99 67 70 80 55 98 78 86 90 97
+                </li>
+                <li>
+                    Užívateľ sa môže rozhodnúť zaliať 1 rastlinku (konva má 25 litrov, ale ak by výsledok mal byť viac než 100 litrov, zvyšok sa vyleje). Zadá číslo rastlinky, ktorú chce poliať.
+                    Môže nezaliať žiadnu rastlinku ak len stlačí Enter.
+                </li>
+                <li>
+                    Program vypíše stav po zaliatí a ubehnutí ďalšieho dňa (rastlinky zase niečo vypili).
+                </li>
+                <li>    
+                    Ak má rastlinka menej ako 0 litrov, umrie a nejde ju už zalievať.
+                </li>
+                <li>    
+                    Keď umrú všetky rastlinky, program vypíše počet dní, ktoré ubehli.
+                </li>
+              </ul> -->
+
+          </section>
       </section>
     </div>
   </div>
