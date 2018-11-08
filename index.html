@@ -40,7 +40,12 @@
         <h3>Podmienky na zápočet</h3>
         <p>Na získanie zápočtu je potrebné splniť všetky podmienky:</p>
         <ul>
-          <li>získať aspoň 65% bodov z domácich úloh</li>
+          <li>získať aspoň 65% bodov z domácich úloh 
+          <ul>
+              <li>musia byť vypracované vlastnoručne</li>
+              <li>teda ani nesmú byť "vlastnoručne" kopírované z iných zdrojov :)</li>
+          </ul>
+          </li>
           <li>samostatne vypracovať zápočtový program
             <ul>
               <li>zadanie programu musí byť schválené cvičiacim</li>
@@ -68,6 +73,9 @@
           Nainštalovať si ho môžete <a href="https://www.lazarus-ide.org/index.php?page=downloads">odtiaľto</a>.
   
           Domáce úlohy budú zadavané a odovzdávané do <a href="https://recodex.mff.cuni.cz/cs">ReCodexu</a>.
+        </p>
+        <p>Viac o častých chybách pri odovzdávaní do ReCodexu si môžete pozrieť na stránke 
+          <a href="https://popelka.ms.mff.cuni.cz/~polak/vyuka.html#ulohy">Petra Poláka</a>.
         </p>
       </section>
 
@@ -152,6 +160,8 @@
           <p>Napíšte program, ktorý na vstupe dostane na dvoch riadkoch dve rôzne 10-tice celých čísel oddelených medzerami (každá usporiadaná od najmenšieho po najväčšie) a 
             na výstup vypíše pole, ktoré vzniklo spojením týchto dvoch tiež tak, aby bolo usporiadané od najmenšieho.
           </p>
+          <a href="images/merge.gif"> Simulácia operácie merge </a>
+          <p><a href="zdrojaky/2_11_2018.html">Zdrojáky z hodiny</a></p>
            <div class="homework">
             <h5>Domáca úloha (deadline štvrtok 8.11. 23:59)</h5>
             <p>V ReCodexe je zadaná úloha Nejdelší rostoucí podposloupnost - bude za 6 bodov.</p>        
@@ -160,13 +170,48 @@
 
         <section>
             <h4>9.11.2018</h4>
-            <p>Budeme precvičovať ďalšie úlohy na polia. Dovysvetlíme si merge z minulého týždňa.
+            <p>Budeme precvičovať ďalšie úlohy na polia.
             </p>
             <h5>* Párne vs nepárne </h5>
             <p>Na vstupe dostanete 50 prvkov a vašou úlohou je vypísať zvlášť na jednom riadku všetky párne (sudé) a na ďalšom všetky nepárne (liché).
              </p>
              <p>
-               Príklad vstupu: 46 4 58 56 68 84 60 2 21 14 6 16 69 99 29 14 37 27 100 89 76 64 99 3 89 98 51 57 98 11 33 7 56 74 8 27 59 52 71 63 99 79 89 75 90 31 84 57 1 45
+               Príklad vstupu: 
+              <code>46 4 58 56 68 84 60 2 21 14 6 16 69 99 29 14 37 27 100 89 76 64 99 3
+              89 98 51 57 98 11 33 7 56 74 8 27 59 52 71 63 99 79 89 75 90 31 84 57 1 45
+              </code>
+            </p>
+            <h5>* Frekvencia</h5>
+            <p>Na vstupe dostanete postupnosť čísel (oddelených medzerou) ukončenú nulou. Vašou úlohou je spočítať,
+              koľko krát sa každé číslo na vstupe opakuje. Na výstup vypíšte na jednotlivé riadky jednotlivé čísla s ich četnosťou.
+            </p>
+            <h5>* Suma v postupnosti</h5>
+            <p>Na vstup dostanete číslo N a 10-prvkovú postupnosť. Vašou úlohou je zistiť, či sa číslo N
+              dá vytvoriť ako súčet dvoch čísel z postupnosti. Na výstup vypíšete buď dvojicu čísel, ktorej 
+              súčet je N, alebo že taká dvojica neexistuje.
+            </p>
+            <h5>** Caesarova šifra</h5>
+            <p>Napíšte program, ktorý načíta číslo N a text ukončený bodkou, a vypíše daný text zašifrovaný 
+              Caesarovou šifrou o N pozícií (pozor, N môže byť aj záporné!). Caesarova šifra robí to, že každé 
+            písmenko nahradí písmenkom, ktoré je od neho v abecede o N pozícií ďalej (ak to pretečie, ide sa znovu od začiatku abecedy).
+            Ako sme si už spomínali, písmenká sú v počítači uložené pod nejakým číslom, ktoré vieme zistiť funkciou 
+          <code>ord(cislo)</code> 
+          a písmená od 'a' po 'z' sú očíslované za sebou idúcimi číslami. Stačí prevádzať malé písmenká abecedy.</p>
+          <p>Na odtestovanie správneho fungovanie programu môžete použiť napr. <a href="https://cryptii.com/pipes/caesar-cipher">túto stránku</a>.</p> 
+          
+          <h5>*** Minipexeso</h5>
+            <p>Napíšte si program, ktorý bude simulovať hru pexesa. Bude mať 10 kartičiek, vždy po dve z písmenok {a,b,c,d,e}.
+              Kartičky treba na začiatku zamiešať (Použite funkciu Radomize a Random(10)). Program potom na obrazovku vypíše
+              čísla od 1 do 10 symbolizujúce kartičky pexesa. Spýta sa užívateľa, ktoré dve kartičky chce otočiť.
+              V ďalšom kroku algoritmus znova vypíše 10 kartičiek, ale namiesto čísel zvolených kartičiek ukáže ich hodnotu (písmenko).
+              Užívateľ môže znovu otočiť dve kartičky. Pri ďalšom výpise kartičiek sa prvá dvojica otočených
+              kartičiek ale znovu zakryje (pokiaľ sa samozrejme písmenká nezhodovali). Keď budú všetky kartičky otočené
+               (teda všetky dvojice odhalené) hra zagratuluje užívateľovi a skončí :)
+            </p>
+            <p>Tip: Aby užívateľ nemohol podvádzať a pozerať na kartičky čo otáčal o pár riadkov vyššie, 
+              pridajte si úplne hore (hneď pod <code>program project1;</code>) knižnicu
+              <code>uses crt;</code>
+              Potom budete môcť v kóde zavolať funkciu <code>ClrScr</code>, ktorá vymaže všetko, čo ste do konzole zatiaľ napísali.
             </p>
             <!--<h5>** Zalievanie</h5>
             <p>Zahrajte sa na záhradníka. Na okne máte 10 rastliniek a každá potrebuje iné množstvo vody. 
@@ -195,10 +240,14 @@
                     Keď umrú všetky rastlinky, program vypíše počet dní, ktoré ubehli.
                 </li>
               </ul> -->
-
+              <div class="homework">
+                  <h5>Domáca úloha (deadline štvrtok 15.11. 23:59)</h5>
+                  <p>V ReCodexe je zadaná úloha Maximum v posloupnosti - bude za 8 bodov.</p>        
+                </div>
           </section>
       </section>
     </div>
   </div>
+
 </body>
 </html>

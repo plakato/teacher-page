@@ -1,0 +1,225 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program cikcak;
+var
+  { Premenna right urcuje, ci ideme doprava. }
+  right: Boolean = True;
+  i,j,width:integer;
+  ch: char;
+
+
+begin
+  readln(width);
+
+  { Jeden beh cyklu nakresli sikmu ciaru. }
+  while(true) do
+  begin
+    { Premenna i nam bude urcovat poziciu lomitka. }
+    for i:=0 to width do
+    begin
+      { Kreslime sikmo zlava doprava }
+      if (right) then
+      begin
+        { Kreslime medzery, len na i-tej pozicii lomitko. }
+        for j:=0 to width do
+        begin
+          if (j=i) then
+             write(&#039;\&#039;)
+          else
+              write(&#039; &#039;);
+        end;
+        end
+      else
+      { Kreslime sikmo zprava dolava. }
+      begin
+        for j:=width downto 0 do
+        begin
+          if (j=i) then
+             write(&#039;/&#039;)
+          else
+              write(&#039; &#039;);
+        end;
+      end;
+      writeln;
+      readln(ch);
+    end;
+    { Zmenime smer }
+    right := not(right);
+  end;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program cikcak;
+var
+  i,width:integer;
+  ch: char;
+
+
+begin
+  readln(width);
+
+  repeat
+  begin
+    { Napiseme sikmu ciaru doprava. }
+    for i:=1 to width-1 do
+    begin
+      { Vyuzijeme znalosti formatovania vystupu,
+        napiseme lomitko odsadene o i pozicii. }
+        write(&#039;\&#039;:i);
+        { Cakame na enter a prejdeme na dalsi riadok. }
+        readln();
+    end;
+
+    { Napiseme sikmu ciaru dolava. }
+    for i:=width downto 2 do
+    begin
+      write(&#039;/&#039;:i);
+      readln();
+    end;
+  end
+  { Za until je podmienka zastavenia cyklu
+    - ked je false, nikdy sa nezastavi. }
+  until false;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program merge;
+var
+  p1,p2: array [1..10] of integer;
+  vysledok: array [1..20] of integer;
+  i,i1,i2: integer;
+
+
+begin
+  // Nacitame obe postupnosti zo vstupu.
+  for i:=1 to 10 do
+  begin
+    read(p1[i]);
+  end;
+
+  for i:=1 to 10 do
+  begin
+    read(p2[i]);
+  end;
+
+  { Spojime ich do jednej podla velkosti.
+    Vyvorime si zarazky, ktore nam budu ukazovat,
+    kde sme v jednotlivych postupnostiach.}
+  i1 := 1;
+  i2 := 1;
+  for i:=1 to 20 do
+  begin
+    if (p1[i1] &lt; p2[i2]) then
+    begin
+      vysledok[i] := p1[i1];
+      { Ak sme dosli na koniec niektoreho z poli,
+        ulozime si tam navacsie mozne cislo, aby
+        nikdy nebolo mensie nez prvky druheho pola. }
+      if (i1 = 10) then
+         p1[i1] := MAXINT
+      else
+          i1 := i1 + 1;
+    end
+      { To iste, ak berieme prvok z druheho pola. }
+    else
+    begin
+      vysledok[i] := p2[i2];
+      if (i2 = 10) then
+         p1[i2] := MAXINT
+      else
+      i2 := i2 + 1;
+    end;
+    // Vysledok vypiseme.
+    write(vysledok[i], &#039; &#039;);
+  end;
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program merge2;
+{ Ina verzia mergu. }
+var
+  { Vysledok si vlastne ani nemusime ukladat do pola. }
+  p1,p2: array [1..10] of integer;
+  i,i1,i2: integer;
+
+
+begin
+  // Nacitame obe postupnosti zo vstupu.
+  for i:=1 to 10 do
+  begin
+    read(p1[i]);
+  end;
+
+  for i:=1 to 10 do
+  begin
+    read(p2[i]);
+  end;
+
+  { Spojime ich do jednej podla velkosti.
+    Vyvorime si zarazky, ktore nam budu ukazovat,
+    kde sme v jednotlivych postupnostiach.}
+  i1 := 1;
+  i2 := 1;
+  repeat
+  begin
+    { Vyriesime aj specialny pripad, ak je jeden index vacsi nez dlzka pola
+      potom vypisujeme uz len druhe pole. }
+    if (i1 &gt; 10) then
+    begin
+         { Hodnotu neukladame, rovno vypiseme. }
+         write(p2[i2], &#039; &#039;);
+         { Ponunieme zarazku na dalsi prvok. }
+         i2 := i2 + 1;
+    end
+    else if (i2 &gt; 10) then
+    begin
+         write(p1[i1], &#039; &#039;);
+         i1 := i1 + 1;
+    end
+    else if (p1[i1] &lt; p2[i2]) then
+    begin
+         write(p1[i1], &#039; &#039;);
+         i1 := i1 + 1;
+    end
+    else
+    begin
+        write(p2[i2], &#039; &#039;);
+        i2 := i2 + 1;
+    end;
+  end
+  { Ukoncime ak su obe zarazky za koncom pola. }
+  until (i1 = 11) and (i2 = 11);
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

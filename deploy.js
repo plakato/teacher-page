@@ -22,7 +22,7 @@ Promise.all(files_copying).then(
         remoteRoot: configFile.path,
         include: ['*', '**/*'],
         exclude: [],
-        deleteRemote: true              // delete existing files at destination before uploading
+        // deleteRemote: true              // delete existing files at destination before uploading
     }
 
  

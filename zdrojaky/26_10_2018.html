@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link  rel="stylesheet" href="../css/prism.css" />
+    <link  rel="stylesheet" href="../css/style.css" />
     <title>Zdrojáky 15. 10. 2018</title>
     <style>code{display: block}</style>
   </head>
@@ -29,41 +29,6 @@ begin
   readln();
   readln();
 end.
-
-</code>
-    </pre>
-     
-    <pre class="line-numbers">
-      <code class="language-pascal">program Kombicislo;
-   var n, n_fakt, k, k_fakt, n_k, n_k_fakt, i, j, l, u, v, w, vysledek: integer;
-
-begin
-  read(n, k);
-  n_k:=n-k;
-  n_fakt:=1;
-  k_fakt:=1;
-  n_k_fakt:=1;
-
-  for i:=n downto 1 do
-  begin
-       n_fakt:=n_fakt*i;
-  end;
-  for j:=l downto 1 do
-  begin
-       k_fakt:=k_fakt*j;
-  end;
-  for l:=n_k downto 1 do
-  begin
-       n_k_fakt:=n_k_fakt*l;
-  end;
-  vysledek:= n_fakt div (k_fakt * n_k_fakt);
-  writeln(vysledek);
-  readln();
-  readln();
-end.
-
-
-
 
 </code>
     </pre>
@@ -101,6 +66,41 @@ begin
   until uzivatel=pocitac;
   readln;
 end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Kombicislo;
+   var n, n_fakt, k, k_fakt, n_k, n_k_fakt, i, j, l, u, v, w, vysledek: integer;
+
+begin
+  read(n, k);
+  n_k:=n-k;
+  n_fakt:=1;
+  k_fakt:=1;
+  n_k_fakt:=1;
+
+  for i:=n downto 1 do
+  begin
+       n_fakt:=n_fakt*i;
+  end;
+  for j:=l downto 1 do
+  begin
+       k_fakt:=k_fakt*j;
+  end;
+  for l:=n_k downto 1 do
+  begin
+       n_k_fakt:=n_k_fakt*l;
+  end;
+  vysledek:= n_fakt div (k_fakt * n_k_fakt);
+  writeln(vysledek);
+  readln();
+  readln();
+end.
+
+
+
 
 </code>
     </pre>
