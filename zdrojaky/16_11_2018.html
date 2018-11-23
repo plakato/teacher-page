@@ -1,0 +1,287 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program DU_Vyskyty_maxima_v_postupnosti_verzia_2;
+type A=array[1..1000] of longint;
+var pocet_cisel,i,j,max:longint;
+    k:A;
+begin
+  max:=0;
+  read(pocet_cisel);
+
+  for i:=1 to pocet_cisel do
+  begin
+    read(k[i]);
+    if k[i]&gt;max then
+    begin
+      max:=k[i];
+    end;
+  end;
+
+  writeln(max);
+
+  for j:=1 to pocet_cisel do
+  begin
+    if k[j]=max then
+    begin
+      write(j,&#039; &#039;);
+    end;
+  end;
+
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program DU_Vyskyty_maxima_v_postupnosti_verzia_1;
+type pole = array[1..1000] of integer;
+var n:integer;
+    i:integer;
+    max:integer;
+    a:pole;
+begin
+  readln(n);
+  for i:=1 to n do
+     read(a[i]);
+  max:=a[1];
+  for i:=1 to n do
+     if a[i]&gt;max then max:=a[i];
+  writeln(max);
+  for i:=1 to n do
+     if a[i]=max then write(i,&#039; &#039;);
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Permutace_Sloupce;		{Upravene riesenie doc. Topfera}
+const MaxN = 20;			{maximální velikost matice}
+var
+	N: integer;				{skutečná velikost matice}
+	A: array[1..MaxN, 1..MaxN] of integer;	{uložení matice}
+	Bylo: array[1..MaxN] of boolean;	{číslo bylo ve sloupci}
+	Cislo: integer;				{zpracovávané číslo}
+	Permutace: boolean;			{permutace čísel 1..N ve sloupci}
+	Pocet: integer;				{počet sloupců s permutací 1..N}
+	R, S: integer;				{číslo řádku a sloupce v matici}
+procedure NacitajVstup();
+begin
+  	{Velikost matice}
+	readln(N);
+	Pocet := 0;
+	{Prvky matice po řádcích}
+	for R := 1 to N do
+	for S := 1 to N do
+            read(A[R,S]);
+end;
+procedure Vyresetuj();
+begin
+  for R := 1 to N do
+      Bylo[R] := false;
+  Permutace := true;	{ve sloupci by mohla být permutace}
+end;
+
+begin
+
+    NacitajVstup;
+
+    for S := 1 to N do
+    begin
+        Vyresetuj;
+	for R:=1 to N do
+        begin
+	  Cislo := A[R,S];
+	  if (Cislo &gt;= 1) and (Cislo &lt;= N) then
+	      if Bylo[Cislo] then
+		      Permutace := false	{číslo se opakuje - není permutace}
+	      else
+		      Bylo[Cislo] := true	{zaznamenat, že toto číslo už bylo}
+	  else
+	      Permutace := false;		{jiné číslo než od 1 do N}
+	end;
+        if Permutace then
+	    Pocet := Pocet+1;
+    end;
+
+    writeln(Pocet);
+    readln;
+    readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Symmetry;
+
+function Reverse(N: longint): longint;
+{obrací pořadí cifer čísla N}
+var V:longint;                 {výsledné číslo}
+begin
+  V := 0;
+  while N &gt; 0 do
+  begin
+    V := V * 10 + N mod 10;    {k V přidáme cifru zprava}
+    N := N div 10              {z N odstraníme cifru zprava}
+  end;
+  Reverse := V
+end;
+
+function IsSymmetric(N: longint): boolean;
+{Testuje, zda je číslo N symetrické. Využívá funkci Reverse.}
+begin
+  IsSymmetric := (N = Reverse(N));
+end;
+
+var Num:longint;
+
+begin
+  readln(Num);
+  while Num &lt;&gt; 0 do
+  begin
+    if IsSymmetric(Num) then
+      writeln(&#039;Cislo &#039;,Num,&#039; je symetricke!&#039;)
+    else
+      writeln(&#039;Cislo &#039;,Num,&#039; nie je symetricke!&#039;);
+
+    readln(Num);
+  end;
+end.
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program SymetriaMatice;
+const Max = 50;
+type
+  Pole = array[1..Max, 1..Max] of integer;
+var N: integer; {skutocny rozmer matice}
+    matica:  Pole;
+    i, j: integer;
+
+function JeSymetrickaPodlaHlavnej(matica: Pole) :boolean;
+var
+    symetricka: boolean = true;
+begin
+  for i:=2 to N do
+  for j:=1 to i-1 do
+    if matica[i,j] &lt;&gt; matica[j,i] then
+       symetricka:=false;
+JeSymetrickaPodlaHlavnej := symetricka;
+end;
+
+function JeSymetrickaPodlaVedlajsej(matica: Pole) :boolean;
+var
+    symetricka: boolean = true;
+begin
+  for i:=1 to N-1 do
+  for j:=1 to N-i do
+    if matica[i,j] &lt;&gt; matica[N-j+1,N-i+1] then
+       symetricka:= false;
+JeSymetrickaPodlaVedlajsej := symetricka;
+end;
+
+function JeSymetrickaPodlaZvislej(matica: Pole) :boolean;
+var
+    symetricka: boolean = true;
+begin
+  for i:=1 to N do
+  for j:=1 to N div 2 do
+    if matica[i,j] &lt;&gt; matica[i,N-j+1] then
+       symetricka:= false;
+JeSymetrickaPodlaZvislej := symetricka;
+end;
+
+begin
+N:=0;
+{ Nacitava po znakoch kym nenajde koniec riadku. }
+while not seekeoln do
+  begin inc(N); read(matica[1,N]) end;
+{ Uz vie rozmer matice, tak nacita zvysne riadky. }
+for i:=2 to N do
+  for j:=1 to N do read(matica[i,j]);
+
+
+if (JeSymetrickaPodlaHlavnej(matica)) then
+   writeln(&#039;Je symetricka podla hlavnej diagonaly.&#039;);
+
+if (JeSymetrickaPodlaVedlajsej(matica)) then
+   writeln(&#039;Je symetricka podla vedlajsej diagonaly.&#039;);
+
+if (JeSymetrickaPodlaZvislej(matica)) then
+   writeln(&#039;Je symetricka podla zvislej osi.&#039;);
+readln;
+readln;
+end.
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program transpozice;
+var
+  matica: array[1..10,1..10] of shortint;
+  N,i,j, tmp: byte;
+
+  procedure NacitajVstup();
+  begin
+    N:=0;
+       { Nacitava po znakoch kym nenajde koniec riadku. }
+      while not seekeoln do
+      begin
+        inc(N);
+        read(matica[1,N]);
+      end;
+    { Uz vie rozmer matice, tak nacita zvysne riadky. }
+    for i:=2 to N do
+      for j:=1 to N do read(matica[i,j]);
+  end;
+
+procedure VypisMaticu();
+begin
+      for i:=1 to N do
+        begin
+             for j:=1 to N do write(matica[i,j], &#039; &#039;);
+             writeln;
+        end;
+end;
+
+begin
+  NacitajVstup;
+
+  { Druhy cyklus az od i+1, aby sme neprehadzovali 2-krat. }
+  for i:=1 to N do
+  for j:=i+1 to N do
+  begin
+       { Prehod dva symetricke prvky. }
+       tmp := matica[i,j];
+       matica[i,j] := matica[j,i];
+       matica[j,i] := tmp;
+  end;
+
+  VypisMaticu;
+
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

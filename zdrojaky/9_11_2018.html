@@ -1,0 +1,353 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program Caesar;
+{ Casova zlozitost O(n), kde n je velkost vstupneho textu. }
+var
+	kluc: integer;
+	text: array[1..10000] of char;
+	i, n, nova: integer;
+        ch: char;
+
+begin
+        { Nacitanie vstupu, velkost textu si ulozime do n.}
+	readln(kluc);
+	read(ch);
+        n := 0;
+        while (ch &lt;&gt; &#039;.&#039;) do
+        begin
+           n += 1;
+           text[n] := ch;
+           read(ch);
+        end;
+
+        { Vsetko okrem medzery posunieme o &#039;kluc&#039; pismen v abecede. }
+        for i := 1 to n do
+        begin
+	  if (text[i] &lt;&gt; &#039; &#039;) then
+          begin
+		  nova := ord(text[i]);
+		  nova := nova + kluc;
+                  { Osetrime pretecenie mimo abecedu.}
+		  if (nova &lt; ord(&#039;a&#039;)) then
+			  nova := nova + (ord(&#039;z&#039;)-ord(&#039;a&#039;)+1);
+		  if (nova &gt; ord(&#039;z&#039;)) then
+			  nova := nova - (ord(&#039;z&#039;)-ord(&#039;a&#039;)+1);
+		  text[i] := chr(nova);
+	  end;
+	end;
+
+        { Vypis vystupu. }
+        for i:=1 to N do
+        begin
+          write(text[i]);
+        end;
+        readln;
+        readln;
+end.
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program frekvencia;
+type
+  pole = array [1..100] of smallint;
+var
+  cisla, cetnosti: pole;
+  cislo,N,i: smallint;
+  najdene: boolean;
+
+
+begin
+  N:= 0;
+  read(cislo);
+
+  { Nacitavame cisla kym nedostaneme nulu. }
+  while (cislo &lt;&gt; 0) do
+  begin
+     { Najdene urcuje, ci sme uz dane cislo nasli, teda zapocitali mu cetnost. }
+     najdene := false;
+     { Prejdeme vsetky cisla co uz mame, ak tam je, zapocitame ho. }
+     for i:=1 to N do
+     begin
+        if (cisla[i] = cislo) then
+           begin
+                cetnosti[i] := cetnosti[i] + 1;
+                najdene := true;
+                break;
+           end;
+     end;
+     { Ak sme ho este nezapocitali, pridame ho. }
+     if not najdene then
+      begin
+           N += 1;     // ekvivalentny zapis N := N + 1;
+           cisla[N] := cislo;
+           cetnosti[N] := 1;
+      end;
+     read(cislo);
+  end;
+
+  { Vypiseme spocitane cetnosti. }
+  for i:=1 to N do
+    writeln(cisla[i], &#039;:&#039;, cetnosti[i]);
+
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program minipexeso;
+{ Algoritmus je potencionalne nekonecny (ked ma uzivatel mizernu pamat)
+  ale 1 krok (otocenie dvoch karticiek) bezi v O(n) - pretoze musime vypisat n karticiek. }
+uses crt;
+var
+  pexeso: array [1..10] of char = (&#039;a&#039;,&#039;a&#039;,&#039;b&#039;,&#039;b&#039;,&#039;c&#039;,&#039;c&#039;,&#039;d&#039;,&#039;d&#039;,&#039;e&#039;,&#039;e&#039;);
+  showing: array [1..10] of boolean;
+  finished: boolean = false;
+  i,j,a,b: byte;
+  tmp: char;
+
+begin
+  Randomize;
+  // Prehadzeme pexeso, aby bolo zamiesane.
+  for i:=1 to 10 do
+  begin
+     j := Random(10)+1;
+     tmp := pexeso[i];
+     pexeso[i] := pexeso[j];
+     pexeso[j] := tmp;
+     showing[i] := false;
+  end;
+
+  { Na zaciatok vypiseme cisla karticiek. }
+  for i:=1 to 10 do
+      write(i, &#039; &#039;);
+  writeln;
+
+  { Kym nie su vsetky pary najdene, nechame uzivatela otocit 2 karticky. }
+  while (not finished) do
+  begin
+       finished := true;
+       { Otocime karticky, ktore uzivate zvoli. }
+       writeln(&#039;Co chces otocit?&#039;);
+       readln(a,b);
+       showing[a] := true;
+       showing[b] := true;
+
+       { Vymazeme obrazovku. }
+       clrscr;
+
+       { Vykreslime karticky. }
+       for i:=1 to 10 do
+        begin
+           if (showing[i]) then
+                 write(pexeso[i],&#039; &#039;)
+           else
+           begin
+                write(i,&#039; &#039;);
+                { Urcite mame neotocenu karticku, takze sme este neskoncili. }
+                finished := false;
+           end;
+        end;
+       writeln;
+
+       { Ak otocene karticky nie su par, zasa ich schovame. }
+       if (pexeso[a] &lt;&gt; pexeso[b]) then
+          begin
+            showing[a] := false;
+            showing[b] := false;
+          end;
+  end;
+
+   writeln(&#039;Gratulujem, nasiel si vsetky pary!&#039;);
+   readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program nejdelsi_podposloupnost;
+
+var P: array [1..10000] of smallint;
+    Index1Nejdelsi,Index2Nejdelsi,AktualniIndex1,AktualniIndex2,n,i: integer;
+
+begin
+
+  readln(n);
+  for i:=1 to n do read(P[i]);
+
+  AktualniIndex1:=1;
+  AktualniIndex2:=1;
+  Index1Nejdelsi:=1;
+  Index2Nejdelsi:=1;
+
+  for i:=2 to n do
+  begin
+    if P[i-1]&lt;P[i] then
+    begin
+     begin
+      AktualniIndex2:=i;
+     end;
+     begin
+      if AktualniIndex2-AktualniIndex1&gt;Index2Nejdelsi-Index1Nejdelsi then
+      begin
+       Index1Nejdelsi:=AktualniIndex1;
+       Index2Nejdelsi:=AktualniIndex2;
+      end;
+     end;
+    end
+    else
+    begin
+      AktualniIndex1:=i;
+      AktualniIndex2:=i;
+    end
+
+  end;
+
+  for i:=Index1Nejdelsi to Index2Nejdelsi do write(P[i],&#039; &#039;);
+
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program parneNeparne;
+{ Zlozitost O(n), kde n je velkost vstupu. }
+
+var
+  vstup,neparne: array [1..50] of byte;
+  i, pocetNep: byte;
+
+
+
+begin
+  // Nacitanie vstupu.
+  for i:=1 to 50 do
+  begin
+    read(vstup[i]);
+  end;
+
+  //Vypiseme parne, neparne ulozime zvlast.
+  pocetNep := 0;
+  write(&#039;Parne cisla su: &#039;);
+  for i:=1 to 50 do
+  begin
+    if (vstup[i] mod 2 = 0) then
+        write(vstup[i],&#039; &#039;)
+    else
+        begin
+          pocetNep := pocetNep + 1;
+          neparne[pocetNep] := vstup[i];
+        end;
+  end;
+  writeln;
+
+  //Vypiseme neparne.
+  write(&#039;Neparne cisla su: &#039;);
+  for i:=1 to pocetNep do
+  begin
+    write(neparne[i],&#039; &#039;);
+  end;
+  writeln;
+
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program rozklad_na_prvocinitele;
+var n,delitel:longint;
+  pole: array [1..10] of integer;
+
+
+begin
+  for i:=1 to 10 do
+  pole[i] := 0;
+
+  readln(n);
+  delitel:=2;
+
+  repeat
+       while n mod delitel = 0 do
+             begin
+                  write(&#039; &#039;,delitel);
+                  n:=n div delitel;
+             end;
+       delitel:=delitel+1;
+
+  until n=1;
+
+  readln();
+
+
+end.
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program suma_v_postupnosti;
+
+var
+  postupnost: array[1..10] of smallint;
+  N, i, j, cislo1, cislo2: smallint;
+  najdene: boolean = false;
+
+begin
+  { Nacitame vstup }
+  read(N);
+  for i := 1 to 10 do
+    Read(postupnost[i]);
+
+  { Skusame scitat kazde s kazdym - ale neskusame zbytocne kazdu dvojicu 2-krat
+    preto j zacina na i+1. }
+  for i:=1 to 9 do
+    begin
+      for j:=i+1 to 10 do
+        begin
+          if (postupnost[i] + postupnost[j] = N) then
+          begin
+            cislo1 := postupnost[i];
+            cislo2 := postupnost[j];
+            najdene := true;
+            break;
+          end;
+        end;
+    end;
+
+  { Vypis vystupu. }
+  if najdene then
+     writeln(&#039;Cislo &#039;,N,&#039; vieme zapisat ako &#039;,cislo1,&#039; + &#039;,cislo2)
+  else
+      writeln(&#039;Cislo &#039;,N,&#039; neviem napisat ako sucet 2 cisel danej postupnosti.&#039;);
+
+  readln;
+  readln;
+end.
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

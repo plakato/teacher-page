@@ -1,0 +1,251 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program piskvorky2;
+type planek = array [0..6,0..6] of char;
+  var i,j:byte;
+    P:planek;
+  function vyhra(a:char):boolean;
+  var k:byte;
+      nalez:boolean;
+  begin
+    k:=ord(a);
+    nalez:=false;
+    for i:=1 to 5 do
+  begin
+    for j:=1 to 5 do
+    begin
+    if ord(P[i,j])=k then
+       begin
+    if (ord(P[i+1,j+1])=k) and (ord(P[i-1,j-1])=k) then nalez:=true;
+    if (ord(P[i+1,j])=k) and (ord(P[i-1,j])=k) then nalez:=true;
+    if (ord(P[i,j+1])=k) and (ord(P[i,j-1])=k) then nalez:=true;
+    if (ord(P[i-1,j+1])=k) and (ord(P[i+1,j-1])=k) then nalez:=true;
+         end;
+    end;
+    end;
+    vyhra:=nalez;
+  end;
+begin
+  for i:=1 to 5 do
+  begin
+    for j:=1 to 5 do
+    begin
+    read(P[i,j])
+    end;
+    readln;
+  end;
+  if vyhra(&#039;X&#039;) then
+     if vyhra(&#039;O&#039;) then writeln(&#039;REMIZA&#039;)
+     else writeln(&#039;VYHRAL X&#039;)
+  else if vyhra(&#039;O&#039;) then writeln(&#039;VYHRAL O&#039;)
+          else writeln(&#039;REMIZA&#039;);
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program rot13;
+{ Casova zlozitost O(dlzkaSlova). }
+  var
+    slovo: string;
+    i: integer;
+function posun(s, koniecABC: char) : char;
+var vysledok: word;
+begin
+  vysledok:= ord(s) + 13;
+  { Skontrolujeme, ci sme nevysli za koniec abecedy. }
+  if vysledok &gt; ord(koniecABC) then
+     vysledok:= vysledok - 26;
+  posun:=chr(vysledok);
+end;
+
+
+begin
+  readln(slovo);
+
+  for i:=1 to length(slovo) do
+  begin
+      if (slovo[i] in [&#039;a&#039;..&#039;z&#039;]) then
+         slovo[i] := posun(slovo[i],&#039;z&#039;)
+      else if (slovo[i] in [&#039;A&#039;..&#039;Z&#039;]) then
+         slovo[i] := posun(slovo[i],&#039;Z&#039;);
+  end;
+  writeln(slovo);
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program sibenica;
+uses crt;
+
+type
+  poleBool = array[1..255] of boolean;
+var
+  slovo: string;
+  odhalene: poleBool;
+  i: integer;
+  uhadnute: boolean = false;
+
+procedure Vypis(slovo:string; odhalene: poleBool);
+begin
+  for i:=1 to length(slovo) do
+  begin
+       if (odhalene[i]) then
+          write(slovo[i]+&#039; &#039;)
+       else
+           write(&#039;_ &#039;);
+  end;
+  writeln;
+end;
+
+function SkusUhadnut(slovo:string; var odhalene: poleBool) : boolean;
+var
+  pismenko: char;
+  uhadol: boolean = true;
+begin
+  writeln(&#039;Hadaj pismenko:&#039;);
+  readln(pismenko);
+  for i:= 1 to length(slovo) do
+  begin
+       { Aby nezalezalo na velkych a malych pismenach, porovnavame upcase. }
+       if (UpCase(slovo[i]) = UpCase(pismenko)) then
+            odhalene[i] := true;
+       if (not odhalene[i]) then
+            uhadol := false;
+  end;
+  SkusUhadnut := uhadol;
+end;
+
+
+begin
+  readln(slovo);
+  { Na zaciatku si pre istotu nastavime odhalene na false. }
+  for i:=1 to length(odhalene) do
+      odhalene[i] := false;
+
+  while not uhadnute do
+  begin
+       clrscr;
+       Vypis(slovo,odhalene);
+       uhadnute := SkusUhadnut(slovo, odhalene);
+  end;
+
+  writeln(&#039;Gratulujem, odhalil si cele slovo!&#039;);
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program stvorcova_klavesnica;
+
+var
+  slovo: string;
+  i,riadok1,stlpec1,
+    riadok2,stlpec2,
+    dlzkaCesty: integer;
+begin
+  { ABCDE
+    FGHIJ
+    KLMNO
+    PQRST
+    UVWXY
+    Z }
+  readln(slovo);
+  riadok1 := 0;
+  stlpec1 := 0;
+  dlzkaCesty := 0;
+
+  for i:=1 to length(slovo) do
+  begin
+     riadok2 := (ord(slovo[i]) - ord(&#039;a&#039;)) div 5;
+     stlpec2 := (ord(slovo[i]) - ord(&#039;a&#039;)) mod 5;
+     dlzkaCesty += abs(riadok1-riadok2) + abs(stlpec1 - stlpec2);
+     riadok1 := riadok2;
+     stlpec1 := stlpec2;
+  end;
+  writeln(&#039;Je potreba aspon &#039;,dlzkaCesty,&#039; krokov.&#039;);
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program tictactoe;
+
+type grid = array [0..6, 0..6] of char;
+var a: grid;
+var i, j: integer;
+var Xwin, Owin: boolean;
+
+procedure solve (r, c, x, y: integer);
+
+begin
+      if (a[r - x][c - y] = a[r][c]) and (a[r][c] = a[r + x][c + y])
+           and (a[r][c] = &#039;X&#039;) then Xwin := true;
+
+      if (a[r - x][c - y] = a[r][c]) and (a[r][c] = a[r + x][c + y])
+           and (a[r][c] = &#039;O&#039;) then Owin := true;
+end;
+
+begin
+     Xwin := false;
+     Owin := false;
+     for i := 0 to 6 do begin
+       for j := 0 to 6 do begin
+            a[i][j] := &#039;#&#039;;
+       end;
+     end;
+
+     for i := 1 to 5 do begin
+       for j := 1 to 5 do begin
+         Read(a[i][j]);
+       end;
+       ReadLn();
+     end;
+
+     for i := 1 to 5 do begin
+       for j := 1 to 5 do begin
+           solve(i, j, 1, 1);
+           solve(i, j, 1, 0);
+           solve(i, j, 0, 1);
+           solve(i, j, -1, 1);
+       end;
+     end;
+
+     if Xwin = Owin then Write(&#039;REMIZA&#039;)
+     else if Xwin &gt; Owin then Write(&#039;VYHRAL X&#039;)
+     else Write(&#039;VYHRAL O&#039;);
+
+     ReadLn();
+     ReadLn();
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

@@ -25,6 +25,7 @@
             <li><a href="#podmienky-zapoctu">Podmienky na zápočet</a></li>
             <li><a href="#konzultacie">Konzultácie</a></li>
             <li><a href="#prostredie">Prostredie</a></li>
+            <li><a href="#tipy">Tipy</a></li>
             <li><a href="#obsahy-cviceni">Obsahy cvičení</a></li>
           </ul>
         </nav>
@@ -77,6 +78,36 @@
         <p>Viac o častých chybách pri odovzdávaní do ReCodexu si môžete pozrieť na stránke 
           <a href="https://popelka.ms.mff.cuni.cz/~polak/vyuka.html#ulohy">Petra Poláka</a>.
         </p>
+        <p>Zoznam chýb, ktoré môže ReCodex hlásiť a ich popis, si môžete pozrieť <a href="https://freepascal.org/docs-html/current/user/userap4.html#x190-197000D">tu.</a></p>
+      </section>
+
+      <section id="tipy">
+        <h3>Tipy</h3>
+        Pár tipov, ktoré by vám mohli pomôcť keď sa zaseknete, alebo sa tomu snažiť predchádzať:
+        <ul>
+          <li>rozumne pomenovávať premenné</li>
+          <ul>
+            <li>nebojte sa dlhých názvov</li>
+            <li>ctrl + medzerník</li>
+            <li>názov má vystihovať úlohu premennej</li>
+          </ul>
+          <li>keď program nerobí čo má - prečo robí to čo robí?</li>
+          <li>testovať po malých kúskoch</li>
+          <li>komentovať</li>
+          <ul>
+            <li>hlavne vtedy, keď napíšete kúsok kódu na ktorý ste ultra hrdí - pravdepodobne je to preto,
+              že je tak zložitý, že zajtra sa v ňom už nevyznáte
+            </li>
+            <li>formátovanie ctrl + D</li>
+          </ul>
+          <li>"Kopírování je častý zdroj chyb" (credit: RNDr. Tomáš Holan, Ph.D.)</li>
+          <ul>
+            <li>po pridaní zkopírovanú časť radšej odtestovať</li>
+            <li>nezabudnúť premenovať čo treba (ctrl+R)</li>
+          </ul>
+          <li>debugovať</li>
+          <li>keď už ste všetko vyskúšali a stále nič, napíšte mi a skúsim vás nakopnúť správnym smerom</li>
+      </ul>
       </section>
 
       <section id="obsahy-cviceni" class="class-content">
@@ -170,7 +201,8 @@
 
         <section>
             <h4>9.11.2018</h4>
-            <p>Budeme precvičovať ďalšie úlohy na polia.
+            <p>Precvičovali sme ďalšie úlohy na polia. Ukázali sme si pár tipov a rád, ako lepšie programovať.
+              Ukázali sme si pár užitočných skratiek v Lazaruse.
             </p>
             <h5>* Párne vs nepárne </h5>
             <p>Na vstupe dostanete 50 prvkov a vašou úlohou je vypísať zvlášť na jednom riadku všetky párne (sudé) a na ďalšom všetky nepárne (liché).
@@ -182,7 +214,7 @@
               </code>
             </p>
             <h5>* Frekvencia</h5>
-            <p>Na vstupe dostanete postupnosť čísel (oddelených medzerou) ukončenú nulou. Vašou úlohou je spočítať,
+            <p>Na vstupe dostanete postupnosť čísel (oddelených medzerou, menej ako 100 čísel) ukončenú nulou. Vašou úlohou je spočítať,
               koľko krát sa každé číslo na vstupe opakuje. Na výstup vypíšte na jednotlivé riadky jednotlivé čísla s ich četnosťou.
             </p>
             <h5>* Suma v postupnosti</h5>
@@ -191,13 +223,14 @@
               súčet je N, alebo že taká dvojica neexistuje.
             </p>
             <h5>** Caesarova šifra</h5>
-            <p>Napíšte program, ktorý načíta číslo N a text ukončený bodkou, a vypíše daný text zašifrovaný 
+            <p>Napíšte program, ktorý načíta číslo N a text ukončený bodkou (do 10000 znakov), a vypíše daný text zašifrovaný 
               Caesarovou šifrou o N pozícií (pozor, N môže byť aj záporné!). Caesarova šifra robí to, že každé 
             písmenko nahradí písmenkom, ktoré je od neho v abecede o N pozícií ďalej (ak to pretečie, ide sa znovu od začiatku abecedy).
             Ako sme si už spomínali, písmenká sú v počítači uložené pod nejakým číslom, ktoré vieme zistiť funkciou 
           <code>ord(cislo)</code> 
-          a písmená od 'a' po 'z' sú očíslované za sebou idúcimi číslami. Stačí prevádzať malé písmenká abecedy.</p>
-          <p>Na odtestovanie správneho fungovanie programu môžete použiť napr. <a href="https://cryptii.com/pipes/caesar-cipher">túto stránku</a>.</p> 
+          a písmená od 'a' po 'z' sú očíslované za sebou idúcimi číslami. Číselnú hodnotu na písmeno prevedieme funkciou <code>chr(cislo)</code>. 
+          Stačí prevádzať malé písmenká abecedy.</p>
+          <p>Na odtestovanie správneho fungovania programu môžete použiť napr. <a href="https://cryptii.com/pipes/caesar-cipher">túto stránku</a>.</p> 
           
           <h5>*** Minipexeso</h5>
             <p>Napíšte si program, ktorý bude simulovať hru pexesa. Bude mať 10 kartičiek, vždy po dve z písmenok {a,b,c,d,e}.
@@ -240,11 +273,95 @@
                     Keď umrú všetky rastlinky, program vypíše počet dní, ktoré ubehli.
                 </li>
               </ul> -->
+              <p><a href="zdrojaky/9_11_2018.html">Zdrojáky z hodiny</a></p>
+
               <div class="homework">
                   <h5>Domáca úloha (deadline štvrtok 15.11. 23:59)</h5>
                   <p>V ReCodexe je zadaná úloha Maximum v posloupnosti - bude za 8 bodov.</p>        
                 </div>
           </section>
+
+          <section>
+              <h4>16.11.2018</h4>
+              <p>Ukázali si ako si rozvrhnúť program na funkcie a procedúry. Na úlohách sme si precvičili dvojrozmerné
+                polia a booleany a snažili sme sa pritom využívať funkcie.
+              </p>              
+              <h5>* Symetrické číslo (používať funkcie!) </h5>
+              <p>Napíšte program, ktorý bude dostávať na vstupe čísla, a pre každé vyhodnotí, či je symetrické.
+                Skúste dodatočne ošetriť, aby program ignoroval nuly na začiatku čísla. </p>
+              <h5>* Transpozícia </h5>
+              <p>Na vstupe dostanete maticu NxN (N si môžete zvoliť pevné). Vypíšte túto maticu transponovanú. </p>
+              <h5>* Diagonála </h5>
+              <p>Na vstupe dostanete maticu NxN (N si môžete zvoliť pevné). Vašou úlohou je určiť, či je
+                symetrická podľa hlavnej diagonály. </p>
+              <h5>* Vedľajšia diagonála </h5>
+              <p> Skúste overiť symetriu podľa vedľajšej diagonály.</p>
+              <h5>* Zvislá os </h5>
+              <p> Skúste overiť symetriu podľa zvislej (vertikálnej) osi prechádzajúcej stredom matice.</p>
+              <h5>** Permutácie v stĺpci </h5>
+              <p>Na vstupe bude číslo N a za ním matica NxN. Vypíšte počet stĺpcov matice, ktoré sú nejakou permutáciou
+                čísel 1 až N (teda je tam každé z týchto čísel práve raz a v ľubovoľnom poradí).
+              </p>
+              <h5>*** Piškvorky </h5>
+              <p>Skúste si v konzoli naprogramovať piškvorky. Sami zvažte a navrhnite rozhranie - ako budú hráči zadávať svoje ťahy.
+                Po každom ťahu skontrolujte, či pridaný znak nie je tretí v riadku, stĺpci či diagonále a oznámte prípadné víťazstvo.
+              </p>
+              <p><a href="zdrojaky/16_11_2018.html">Zdrojáky z hodiny</a></p>
+               <div class="homework">
+                <h5>Domáca úloha (deadline štvrtok 22.11. 23:59)</h5>
+                <p>V ReCodexe je zadaná úloha Piškvorky 5x5 - bude za 12 bodov.</p>        
+              </div>
+            </section>
+
+            <section>
+              <h4>23.11.2018</h4>
+              <p>Pridáme si pár postrehov, aby sme lepšie používali funkcie. Precvičíme si to na úlohách
+                s použitím stringov a charov.
+              </p>              
+              <h5>* Odzadu </h5>
+              <p>
+                Napíšte program, ktorý pri zadaní riadku (do 255 znakov) ho na výstup vypíše odzadu.
+              </p>
+              <h5>* ROT13 </h5>
+              <p>
+                Naprogramujte šifru <a href="https://www.algoritmy.net/article/41797/ROT13">ROT13</a>.
+                Na vstupe bude text (tzn. aj iné znaky než len písmenká, ale zmestí sa do stringu). Na výstup
+                vypíšte zašifrovaný text. Správnosť zašifrovania si môžete overiť napr. <a href="https://www.rot13.com/">TU.</a>
+              </p>
+              <h5>* Štvorcová klávesnica </h5>
+              <p>
+                Máte klávesnicu, v ktorej sú písmená usporiadané do štvorca nasledovne:
+              </p>
+              <img src="images/klavesnica.png" alt="klavesnica" width="250">
+              <p>
+                Táto klávesnica má písaciu hlavu, ktorá sa vie pohybovať nad klávesnicou iba hore/dole, vpravo/vľavo.
+                Keď dôjde nad požadované písmeno, vypíše ho. Na začiatku je hlava nad písmenom A. Napíšte program, ktorý
+                pre zadané slovo spočíta, koľko minimálne krokov musí hlava vykonať, aby ho pomocou svojej klávesnice vypísala.
+                Akú zložitosť má vaše riešenie? 
+              </p>
+              <h5>* Šibenica </h5>
+              <p>
+                Skúste si naprogramovať hru šibenice. Na začiatku užívateľ zadá (alebo vy defaultne nastvíte, ako chcete)
+                slovo, ktoré sa bude hádať. Program potom vypíše podčiarkovník miesto každého písmena slova. Užívateľ
+                zadá písmeno, ktoré si myslí, že v tom slove bude. Ak tam skutočne bolo, nabudúce sa už namiesto podčiarkovníka
+                vypíše dané písmeno, a tak dookola, kým na neodhalí celé slovo. Zariaďte, aby program nerozlišoval
+                malé a veľké písmená (hodí sa funcia <code>UpCase</code> z prednášky). Na vymazanie obrazovky sa zas
+                hodí <code>ClrScr</code> (z knižnice crt);
+              </p>
+              <h5>*** Matica na N-tú </h5>
+              <p>
+                Skúste si naprogramovať mocnenie matice na N-tú. Dokážete to aj v čase O(logN)? Pár užitočných
+                rád ste mali na prenáške ;)
+              </p>
+              <p><a href="zdrojaky/23_11_2018.html">Zdrojáky z hodiny</a></p>
+               <div class="homework">
+                <h5>Domáca úloha (deadline štvrtok 29.11. 23:59)</h5>
+                <p>V ReCodexe je zadaná úloha Sústavy - bude za 10 bodov. Na získanie bodov je povinné
+                  použiť funkcie! Riešenie bez jedinej funkcie bude hodnotené nulou. Riešenie s nesprávnym
+                  použitím funkcie (použitie globálnych premenných namiesto parametrov funkcie) bude hodnotené polovicou.
+                </p>        
+              </div>
+            </section>
       </section>
     </div>
   </div>
