@@ -1,0 +1,233 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program logy;
+uses sysutils;
+
+var
+  vystup:text;
+begin
+  assign(vystup, &#039;log.txt&#039;);
+  { Subor log.txt musi existovat! Append nevytvara novy subor. }
+  {if not FileExists(&#039;log.txt&#039;) then
+  begin
+    rewrite(vystup);
+    close(vystup);
+  end;  }
+  append(vystup);
+  writeln(vystup,TimeToStr(Time));
+  close(vystup);
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program polynomy;
+
+const MaxPocet = 10;
+
+type Polynom = record
+ Pocet: word; {počet nenulových členů}
+ Clen: array[0..MaxPocet] of
+ record Koef: word; Exp: word end;
+ end;
+
+
+ function NacitajPolynom(): Polynom;
+ var
+   i:word = 0;
+   pol:Polynom;
+   znak:char;
+ begin
+   while not eoln do
+   begin
+     i += 1;
+     read(pol.Clen[i].Koef);
+     read(pol.Clen[i].Exp);
+     //if not eoln then read(znak); {Znamienko +}
+   end;
+   pol.pocet := i;
+   readln;
+   NacitajPolynom := pol;
+ end;
+
+procedure Vypis(var p: Polynom);
+var i:word;
+begin
+  for i:=1 to p.Pocet do
+  begin
+    if (i &lt;&gt; 1) then write(&#039;+&#039;);
+    write(p.Clen[i].Koef,&#039;*x^&#039;,p.Clen[i].Exp);
+  end;
+end;
+
+var
+  polynom1,polynom2,vysledny: Polynom;
+  i1, i2,i: word;
+begin
+  polynom1 := NacitajPolynom();
+  polynom2 := NacitajPolynom();
+  i1 := 1;
+  i2 := 1;
+  i := 0;
+
+  while (i1 &lt;= polynom1.Pocet) and
+        (i2 &lt;= polynom2.Pocet) do
+    begin
+      i += 1;
+      if (polynom1.Clen[i1].Exp &lt; polynom2.Clen[i2].Exp) then
+       begin
+            vysledny.Clen[i] := polynom1.Clen[i1];
+            i1 += 1;
+       end else
+       if (polynom1.Clen[i1].Exp &gt; polynom2.Clen[i2].Exp) then
+       begin
+            vysledny.Clen[i] := polynom2.Clen[i2];
+            i2 += 1;
+       end else
+       begin
+            { Pri rovnakom exponente scitame koeficienty. }
+            vysledny.Clen[i].Exp := polynom1.Clen[i1].Exp;
+            vysledny.Clen[i].Koef:= polynom1.Clen[i1].Koef + polynom2.Clen[i2].Koef;
+            i1 += 1;
+            i2 += 1;
+       end;
+    end;
+
+    {Ak v niektorom polynome este nieco zostalo, pridaj do vysledku.}
+    while i1&lt;= polynom1.Pocet do
+    begin
+      i += 1;
+      vysledny.Clen[i] := polynom1.Clen[i1];
+      i1 += 1;
+    end;
+    while i2&lt;= polynom2.Pocet do
+    begin
+      i += 1;
+      vysledny.Clen[i] := polynom2.Clen[i2];
+      i2 += 1;
+    end;
+
+    vysledny.Pocet := i;
+    Vypis(vysledny);
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program triedenie;
+const
+  pocet = 25;
+type
+  zoznam = array[1..pocet] of string;
+
+function NacitajVstup(): zoznam;
+var
+  studenti: zoznam;
+  vstup:text;
+  i: word;
+begin
+  assign(vstup,&#039;studenti.txt&#039;);
+  reset(vstup);
+  for i:=1 to pocet do
+  begin
+    readln(vstup,studenti[i]);
+  end;
+
+  NacitajVstup := studenti;
+end;
+
+function VZlomPoradi(a1,a2: string):boolean;
+var i: word = 1;
+begin
+  { Prejdeme cez vsetky pismena, v ktorych sa zhoduju. }
+   while (i&lt;= length(a1)) and (i&lt;= length(a2)) and
+         (UpCase(a1[i]) = UpCase(a2[i])) do
+         i += 1;
+   { Kratsie slovo je abecedne skor ako dlhsie. }
+   if (i &gt; length(a1)) then VZlomPoradi := false
+   else
+   if (i &gt; length(a2)) or (UpCase(a1[i]) &gt; UpCase(a2[i])) then
+     VZlomPoradi := true
+   else
+     VZlomPoradi := false;
+
+end;
+
+var
+  S: zoznam;
+  tmp: string;
+  i,j:word;
+begin
+  S := NacitajVstup();
+
+  for i:=2 to pocet do
+    for j:=pocet downto i do
+      if VZlomPoradi(S[j-1],S[j]) then     {vymenit sousedni prvky}
+        begin
+          tmp:=S[j-1];
+          S[j-1]:=S[j];
+          S[j]:=tmp;
+        end;
+
+  { Vypiseme vysledok. }
+  for i:=1 to pocet do
+      writeln(S[i]);
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program zasobnikImplementace;
+var
+  N:integer = 0;
+  zasobnik: array[1..100] of char;
+  vysledok: string = &#039;&#039;;
+  znak: char;
+begin
+  { Nacitame prikazy na prvom riadku. }
+  while not eoln do
+  begin
+      read(znak);
+      { Ignorujeme pop ak na zasobniku nic nie je. }
+      if (znak = &#039;*&#039;) and (N&gt;0) then
+      begin
+        vysledok += zasobnik[N];
+        N -= 1;
+      end
+      else
+      begin
+          N += 1;
+          zasobnik[N] := znak;
+      end;
+  end;
+
+  writeln(vysledok);
+  readln;
+  readln;
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

@@ -72,7 +72,7 @@
         </p>
         <ul>
           <li><a href="http://mj.ucw.cz/vyuka/zap/">Martin Mareš</a></li>
-          <li><a href="https://www.ms.mff.cuni.cz/~dvoram30/prg1po/zapoctak.html">Martin Dvořák</a></li>
+          <li><a href="https://www.ms.mff.cuni.cz/~dvoram30/prg1po/index.html">Martin Dvořák</a></li>
           <li><a href="http://www.ms.mff.cuni.cz/~zemlicka/vyuka/NMIN101/namety/">Michal Žemlička</a></li>
         </ul>
         <p>Ak nemáte nápad, môžete si vybrať aj z uvedených programov (prípadne ich nejak modifikovať), ale musíte to 
@@ -436,27 +436,112 @@
 
             <section>
               <h4>30.11.2018</h4>
-              <p>Uvedieme si všetky podrobnosti k <a href="#zapoctovy-program">zápočtovému programu.</a>
-                Urobíme si úlohy zamerané na súbory. Zopakujeme triediace algoritmy.
+              <p>Uviedli si všetky podrobnosti k <a href="#zapoctovy-program">zápočtovému programu.</a>
+                Urobili sme úlohy zamerané na súbory. Zopakovali sme triediace algoritmy.
               </p>  
               <h5>* Všetko na výstup!</h5>     
-              <p>Napíšte program, ktorý vypíše celý obsah súboru vstup.txt na štandardný výstup.</p>       
+              <p>Napíšte program, ktorý vypíše celý obsah súboru (napr.<a href="zdrojaky/30_11_2018/vstup.txt" target="_blank">vstup.txt</a>) 
+                na štandardný výstup.</p>       
               <h5>* Po písmenku</h5>     
-              <p>Napíšte program, ktorý vypíše každé písmeno zo súboru vstup.txt na zvláštny riadok.</p>       
+              <p>Napíšte program, ktorý vypíše každý znak (okrem znakov nových riadkov!) zo súboru 
+                  (napr.<a href="zdrojaky/30_11_2018/vstup.txt" target="_blank">vstup.txt</a>)
+                 na zvláštny riadok.</p>       
               <h5>* 10 riadkov </h5>
               <p>
-                Napíšte program, prečíta vstup zo súboru A.txt a skopíruje prvých 10 riadkov do súboru B.txt. 
+                Napíšte program, ktorý prečíta vstup zo súboru 
+                (napr.<a href="zdrojaky/30_11_2018/lorem.txt" target="_blank">lorem.txt</a>)
+                 a skopíruje prvých 10 riadkov do súboru lorem10.txt. 
                 Ak na vstupe nie je 10 riadkov, skopíruje iba tie, ktoré tam sú.
               </p>
+              <h5>** Pevna sirka </h5>
+              <p>
+                Napíšte program, ktorý prečíta vstup zo súboru 
+                (napr.<a href="zdrojaky/30_11_2018/lorem.txt" target="_blank">lorem.txt</a>)
+                a skopíruje ho do loremBlok.txt tak, aby žiaden riadok nebol dlhší než 50 znakov. 
+                Prázdne alebo kratšie riadky sa len prepíšu. Príliš dlhé riadky sa rozdelia na viac riadkov. 
+                Riadok je možné rozdeliť len na medzere (radšej nedelíme slová, aby sme to náhodou nepobabrali 
+                a nenaštvali češtinárov). Nadbytočné medzery ignorujte.
+              </p>
+              <p>BONUS: Upravte tento program tak, aby výstup zarovnával do bloku. Každý riadok je teda potrebné doplniť
+                na plnú šírku medzerami tak, že prvý aj posledný znak riadku je súčasťou slova. Medzery sa pravidelne 
+                rozmiestnia medzi slová v riadku. Medzery doplňujte zľava - takže ak nevychádza rovnaký počet medzier 
+                medzi slovami v riadku, medzery medzi prvými slovami budú o znak širšie než medzi poslednými.
+              </p>
               
-              <!--<p><a href="zdrojaky/30_11_2018.html">Zdrojáky z hodiny</a></p>-->
+              <p><a href="zdrojaky/30_11_2018.html">Zdrojáky z hodiny</a></p>
                <div class="homework">
                 <h5>Domáca úloha (deadline štvrtok 6.12. 23:59)</h5>
-                <p>V ReCodexe je zadaná úloha Sústavy - bude za 10 bodov. Na získanie bodov je povinné
-                  použiť funkcie! Riešenie bez jedinej funkcie bude hodnotené nulou. Riešenie s nesprávnym
-                  použitím funkcie (použitie globálnych premenných namiesto parametrov funkcie) bude hodnotené polovicou.
+                <p>V ReCodexe je zadaná úloha Počet různých čísel - bude za 12 bodov. Rátajte s tým, že ani vstup ani
+                  všetky rôzne čísla sa vám nemusia vojsť do pamäti. Ak vám to prejde ReCodexom, ale nebude spĺňať túto podmienku,
+                  body vám budú dodatočne odpočítané.
                 </p>        
               </div>
+            </section>
+
+            <section>
+              <h4>7.12.2018</h4>
+              <p>Urobíme si úlohy na všetko možné, čo sme zatiaľ vynechávali - frontu, zásobník, record, append, triedenie.
+              </p>  
+              <h5>* Append</h5>
+              <p>Napíšte program, ktorý do súboru log.txt vždy pripíše čas, kedy bol spustený. Keď teda program spustíte 
+                10-krát, v súbore bude 10 časov. Aktuálny čas získate pomocou funkcie <code>TimeToStr(Time)</code>, ktorá
+                je v knižnici SysUtils (musíte pridať <code>uses SysUtils;</code> na druhý riadok vášho programu).
+              </p>
+              <h5>* Zásobník</h5>     
+              <p>Implementujte zásobník. Na prvom riadku štandardného vstupu dostane príkazy - velké písmeno
+                znamená push (vložiť ho na zásobník), hviezdička znamená pop (vybrať posledné písmeno zo zásobníku).
+                Po načítaní celého vstupu (1 riadok) vypíšte na štandardný výstup postupnosť operácií pop.
+              </p>       
+              <p>Príklad vstupu: <code>EAM**S*FWRPOT**S***UENVA****</code> </p>
+              <p>Odpovedajúci výstup: <code>MASTOSPRAVNE</code> </p>
+              <h5>* Fronta zo zásobníku?</h5>     
+              <p>Premyslite si, či by ste vedeli implementovať frontu, keby ste mohli používať len zásobníky.</p>   
+              <p>Vedeli by ste to aj naopak - zásobník iba pomocou front?</p>    
+              <h5>** Súčet polynómov</h5>
+              <p> Napíšte program, ktorý bude sčítavať 2 riedke polynómy. Využite na to 2.tvar recordu pre polynómy
+                 z prednášky. Koeficient si môžete dať celočíselný, aby sa vám to krajšie vypisovalo. Polynóm na vstupe môže mať 
+                 napr. formát:  <code>2 1 5 3 1 4</code>, kde vždy dvojica čísel je koeficient-exponent, takže tento zápis by
+                 reprezentoval polynóm <code> 2*x^1 + 5*x^3 + 1*x^4</code>. Výstup vypíšte v nejakom lepšie čitateľnom formáte.
+              </p>
+              <h5>* Triedenie</h5>
+              <p>
+                Modifikujte Váš obľúbený triediaci algoritmus z prednášky tak, aby triedil podľa abecedy (iba anglickej,
+                na veľkých a malých písmenách nezáleží).
+                Ako vstup použijte napr. <a href="zdrojaky/7_12_2018/studenti.txt">studenti.txt</a>.
+              </p>
+              
+             <p><a href="zdrojaky/7_12_2018.html">Zdrojáky z hodiny</a></p>
+               <div class="homework">
+                <h5>Domáca úloha (deadline štvrtok 13.12. 23:59)</h5>
+                <p>V ReCodexe je zadaná úloha Dělení dlouhého čísla - bude za 15 bodov.
+              </div>
+              <div class="homework">
+                <h5>Bonusová úloha (deadline štvrtok 10.1. 23:59)</h5>
+                <p>V ReCodexe je zadaná úloha Faktoriál velkých čísel - je nepovinná, môže vám ale pomôcť
+                  lepšie si precvčiť prácu s dlhými číslami. Úspešné vypracovanie bude odmenené 5 bonusovými 
+                  bodmi.
+              </div>
+            </section>
+
+            <section>
+                <h4>14.12.2018</h4>
+                <p>Rekurzia.
+                </p>                  
+            </section>
+            <section>
+                <h4>21.12.2018</h4>
+                <p>Rekurzia.
+                </p>                  
+            </section>
+            <section>
+                <h4>4.1.2019</h4>
+                <p>Rekurzia.
+                </p>                  
+            </section>
+            <section>
+                <h4>11.1.2019</h4>
+                <p>
+                </p>                  
             </section>
       </section>
     </div>

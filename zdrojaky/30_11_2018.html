@@ -1,0 +1,170 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program navystup;
+var
+    subor: text;
+    riadok:string;
+begin
+  assign(subor,&#039;vstup.txt&#039;);
+  reset(subor);
+
+  while not eof(subor) do
+  begin
+       readln(subor,riadok);
+       writeln(riadok);
+  end;
+
+  close(subor);
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program poznaku;
+var
+    subor: text;
+    znak:char;
+begin
+  assign(subor,&#039;vstup.txt&#039;);
+  reset(subor);
+
+  while not eof(subor) do
+  begin
+       while not eoln(subor) do
+       begin
+            read(subor,znak);
+            writeln(znak);
+       end;
+      readln(subor); // Precita odentrovanie.
+  end;
+
+  close(subor);
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program riadkov10;
+var
+    vstup,vystup: text;
+    riadok:string;
+    pocet:byte = 0;
+begin
+  assign(vstup,&#039;lorem.txt&#039;);
+  assign(vystup,&#039;lorem10.txt&#039;);
+  reset(vstup);
+  rewrite(vystup);
+
+  while not eof(vstup) do
+  begin
+      inc(pocet);
+      if (pocet &gt; 10) then break;
+      readln(vstup, riadok);
+      writeln(vystup, riadok);
+  end;
+
+  close(vstup);
+  close(vystup);
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program zarovnanie;
+const
+  sirka:byte = 50;
+var
+    vstup,vystup: text;
+    slovo, riadok:string;
+
+{ Precita slovo z riadku. }
+function precitajSlovo(): string;
+var
+    slovo: string = &#039;&#039;;
+    znak: char;
+begin
+  while not (eof(vstup) or eoln(vstup)) do
+  begin
+      read(vstup, znak);
+      if (znak &lt;&gt; &#039; &#039;) then
+         slovo := slovo + znak
+      else
+        { Ignorujeme zbytocne medzery pred slovom. }
+        if (slovo &lt;&gt; &#039;&#039;) then break;
+  end;
+  { Ak sme len odriadkovali ale neprecitali slovo,
+  naznacime to prazdnym slovom. }
+  if eoln(vstup) and (slovo = &#039;&#039;) then
+     readln(vstup);
+
+  precitajSlovo := slovo;
+end;
+
+
+
+begin
+  assign(vstup,&#039;lorem.txt&#039;);
+  assign(vystup,&#039;loremBlok.txt&#039;);
+  reset(vstup);
+  rewrite(vystup);
+  riadok := precitajSlovo;
+
+  while not eof(vstup) do
+  begin
+      slovo := precitajSlovo;
+      { Prazne slovo znamena odriadkovat. }
+      if slovo = &#039;&#039; then
+         begin
+           writeln(vystup,riadok);
+           riadok := &#039;&#039;;
+         end;
+
+      { Skontrolujeme ci sa este zmesti na riadok. }
+      if (length(riadok) + length(slovo) + 1) &lt;= sirka then
+         begin
+           if riadok = &#039;&#039; then
+              riadok := slovo
+           else
+              riadok := riadok + &#039; &#039; + slovo;
+         end
+      else
+        begin
+          { Vypiseme riadok a na novy dame nove slovo. }
+          writeln(vystup, riadok);
+          riadok := slovo;
+        end;
+
+  end;
+
+  { Ak nam zostal nevypisany riadok - vypiseme ho. }
+  if (riadok &lt;&gt; &#039;&#039;) then
+     writeln(vystup, riadok);
+
+  close(vstup);
+  close(vystup);
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

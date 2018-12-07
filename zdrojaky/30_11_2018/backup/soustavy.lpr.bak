@@ -1,0 +1,48 @@
+function Nacti( sou: integer ): integer;
+var
+   c: char;
+   x: integer;
+begin
+
+   x := 0;
+   read( c );
+   while not eof and not (c in ['0'..'9']) do read( c );
+   while c in ['0'..'9'] do
+   begin
+      x := sou*x + ord(c)-ord('0');
+      if not eof then read( c )
+                 else c := '?'
+   end;
+   Nacti := x
+end;
+
+
+function Zapis( sou, x: integer ): string;
+var
+   s: string;
+begin
+
+   s := '';
+   while x > 0 do
+   begin
+      s := chr( ord('0')+(x mod sou) ) +s;
+      x := x div sou
+   end;
+
+   Zapis := s
+end;
+
+
+var  sou, A,B: integer;
+begin
+   read( sou );
+   A := Nacti( sou );
+   read( sou );
+   B := Nacti( sou );
+
+   read( sou );
+   writeln( Zapis( sou, A+B ) );
+   writeln( Zapis( sou, A-B ) );
+   writeln( Zapis( sou, A*B ) );
+   writeln( Zapis( sou, A div B ) );
+end.
