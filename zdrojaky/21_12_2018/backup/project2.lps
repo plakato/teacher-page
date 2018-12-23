@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="project2.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="38"/>
+        <CursorPos Y="60"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="16" HistoryIndex="15">
+      <Position1>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="9" Column="131"/>
+      </Position1>
+      <Position2>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position2>
+      <Position3>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="13"/>
+      </Position3>
+      <Position4>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position4>
+      <Position5>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="13"/>
+      </Position5>
+      <Position6>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position6>
+      <Position7>
+        <Filename Value="project2.lpr"/>
+        <Caret Column="63"/>
+      </Position7>
+      <Position8>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position8>
+      <Position9>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="13"/>
+      </Position9>
+      <Position10>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position10>
+      <Position11>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="13"/>
+      </Position11>
+      <Position12>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position12>
+      <Position13>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="17"/>
+      </Position13>
+      <Position14>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="18"/>
+      </Position14>
+      <Position15>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="13"/>
+      </Position15>
+      <Position16>
+        <Filename Value="project2.lpr"/>
+        <Caret Line="15"/>
+      </Position16>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="project2.lpr"/>
+        <Line Value="60"/>
+      </Item1>
+    </BreakPoints>
+    <Watches Count="3">
+      <Item1>
+        <Expression Value="vrch"/>
+      </Item1>
+      <Item2>
+        <Expression Value="hod"/>
+      </Item2>
+      <Item3>
+        <Expression Value="i"/>
+      </Item3>
+    </Watches>
+  </Debugging>
+</CONFIG>

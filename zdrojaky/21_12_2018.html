@@ -1,0 +1,201 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program bludiskoStromceka;
+type
+  plocha = array[1..100, 1..100] of char;
+var
+  velkost: integer;
+
+procedure vypisBludisko(bludisko: plocha);
+var
+  i,j : integer;
+begin
+    for i:= 1 to velkost do
+    begin
+         for j:= 1 to velkost do
+         begin
+              write(bludisko[i,j]);
+         end;
+         writeln;
+    end;
+
+end;
+
+procedure hladajCestu(bludisko: plocha; x,y: integer);
+begin
+
+    { Ak na dane policko mozeme vstupit, prehladame vsetky okolite policka. }
+    if (bludisko[x, y] = &#039; &#039;) or (bludisko[x, y] = &#039;S&#039;)  then
+    begin
+      { Bodkami si oznacime spravnu cestu. }
+      if (bludisko[x, y] = &#039; &#039;) then bludisko[x, y] := &#039;.&#039;;
+      hladajCestu(bludisko, x+1,y);
+      hladajCestu(bludisko, x-1,y);
+      hladajCestu(bludisko, x,y+1);
+      hladajCestu(bludisko, x,y-1);
+    end;
+    { Ked dojdeme do ciela, vypiseme cestu. }
+    if (bludisko[x,y] = &#039;C&#039;) then vypisBludisko(bludisko);
+end;
+
+var
+  vstup: text;
+  i, j, Sx, Sy: integer;
+  bludisko: plocha;
+
+
+begin
+  { Nacitame vstup. }
+  assign(vstup,&#039;bludisko.txt&#039;);
+  reset(vstup);
+  readln(vstup, velkost);
+  for i:= 1 to velkost do
+  begin
+      for j:= 1 to velkost do
+      begin
+          read(vstup,bludisko[i,j]);
+          { Poznamename si, kde bol start. }
+          if (bludisko[i,j] = &#039;S&#039;) then
+          begin
+            Sx := i;
+            Sy := j;
+          end;
+      end;
+      readln(vstup);
+  end;
+  close(vstup);
+
+  { Znacneme prehladavat na startovnom policku. }
+  hladajCestu(bludisko, Sx, Sy);
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program elfovia;
+
+const MAX = 40;
+
+var ceny: array [1..MAX] of word;
+    pocet, i: byte;
+    sucet: longword;
+
+function rozdel(rozdelene: byte; moje: longword): boolean;
+begin
+  if rozdelene &gt;= pocet then
+    rozdel := (moje * 2 = sucet)
+  else
+  begin
+    inc(rozdelene);
+    rozdel := rozdel(rozdelene, moje + ceny[rozdelene]) or
+              rozdel(rozdelene, moje);
+  end;
+end;
+
+begin
+  readln(pocet);
+  sucet := 0;
+  for i := 1 to pocet do
+  begin
+    read(ceny[i]);
+    sucet += ceny[i];
+  end;
+  readln;
+
+  if rozdel(0, 0) then
+    writeln(&#039;Da sa rozdelit.&#039;)
+  else
+    writeln(&#039;Neda sa rozdelit.&#039;);
+  readln;
+
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program elfovia2;
+
+const MAX = 40;
+
+var ceny: array [1..MAX] of word;
+    mojeCeny: array [1..MAX] of boolean;
+    pocet, i: byte;
+    sucet: longword;
+
+{ rozdelene - index pokial uz su predmety rozdelene. }
+{ moje suma - sucet hodnot priradenych mne. }
+function rozdel(rozdelene: byte; mojeSuma: longword): boolean;
+var lze: boolean;
+    j: byte;
+begin
+  { Ak mame rozdelene vsetko, vysledok vypiseme. }
+  if rozdelene &gt;= pocet then
+  begin
+    lze := (moje * 2 = sucet);
+    if lze then
+    begin
+      for j := 1 to pocet do
+        if mojeCeny[j] then
+          write(ceny[j], &#039; &#039;);
+      writeln;
+    end;
+    rozdel := lze;
+  end
+  { Inak si skusime aktualny predmet pridat/nepridat a rozdelujeme dalej. }
+  else
+  begin
+    inc(rozdelene);
+    mojeCeny[rozdelene] := true;
+    lze := rozdel(rozdelene, moje + ceny[rozdelene]);
+    mojeCeny[rozdelene] := false;
+    if lze then
+      rozdel := true
+    else
+    begin
+      rozdel := rozdel(rozdelene, moje);
+    end;
+  end;
+end;
+
+begin
+
+  readln(pocet);
+  sucet := 0;
+  for i := 1 to pocet do
+  begin
+    read(ceny[i]);
+    sucet += ceny[i];
+  end;
+  readln;
+
+  if rozdel(0, 0) then
+    writeln(&#039;Da sa rozdelit.&#039;)
+  else
+    writeln(&#039;Neda sa rozdelit.&#039;);
+  readln;
+
+
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

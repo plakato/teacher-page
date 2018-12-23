@@ -1,0 +1,121 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="../css/style.css" />
+    <title>Zdrojáky 15. 10. 2018</title>
+    <style>code{display: block}</style>
+  </head>
+  <body>
+    
+    <pre class="line-numbers">
+      <code class="language-pascal">program nasledujuca_permutacia;
+
+function nasledujucaVacsia(permutacia : string; index: word) : word;
+var
+  najIndex, i: word;
+begin
+  najIndex := index+1;
+
+  for i:=index + 2 to length(permutacia) do
+  begin
+      if (permutacia[i] &gt; permutacia[index]) and
+         (permutacia[i] &lt;= permutacia[najIndex]) then
+         najIndex := i;
+  end;
+  nasledujucaVacsia := najIndex;
+end;
+
+procedure swap(var permutacia : string; i1, i2:word);
+var
+  tmp: char;
+begin
+  tmp := permutacia[i1];
+  permutacia[i1] := permutacia[i2];
+  permutacia[i2] := tmp;
+end;
+
+procedure otoc(var permutacia: string; indexStart, indexEnd: word);
+var
+  i: word;
+begin
+  for i:=indexStart to indexEnd-1 do
+  begin
+      swap(permutacia, i,i+1);
+  end;
+
+  if (indexStart &lt; i) then
+     otoc(permutacia,indexStart, indexEnd-1);
+end;
+
+var
+  permutacia: string;
+  i: word;
+
+begin
+  readln(permutacia);
+  i := length(permutacia) - 1;
+  // Citame kym je zprava rastuca.
+  while (i &gt; 0) and (permutacia[i] &gt; permutacia[i+1]) do
+  begin
+     i -= 1;
+  end;
+
+  if (i = 0) then writeln(&#039;Toto je lexikograficky posledna permutacia.&#039;)
+  else
+  begin
+      swap(permutacia, i, nasledujucaVacsia(permutacia,i));
+      otoc(permutacia, i+1, length(permutacia));
+      writeln(permutacia);
+  end;
+
+  readln;
+end.
+
+</code>
+    </pre>
+     
+    <pre class="line-numbers">
+      <code class="language-pascal">program Zavorky;
+// Autor: Martin Dvorak.
+
+var pocet: byte;
+
+function zavorkuj(prefix: string; levych, pravych: byte): longword;
+var soucet: longword;
+begin
+  if pravych = 0 then
+  begin
+    writeln(prefix);
+    zavorkuj := 1;
+  end
+  else
+  begin
+    soucet := 0;
+    if pravych &gt; levych then
+      soucet := zavorkuj(prefix + &#039;)&#039;, levych, pravych-1);
+    if levych &gt; 0 then
+      soucet += zavorkuj(prefix + &#039;(&#039;, levych-1, pravych);
+    zavorkuj := soucet;
+  end;
+end;
+
+begin
+
+  writeln(&#039;Zadejte pocet paru zavorek: &#039;);
+  readln(pocet);
+  writeln(zavorkuj(&#039;&#039;, pocet, pocet));
+  readln;
+
+end.
+
+</code>
+    </pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="../js/prism.js"></script>
+  </body>
+  </html>

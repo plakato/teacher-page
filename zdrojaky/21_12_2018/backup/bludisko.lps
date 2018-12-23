@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="bludisko.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="bludiskoStromceka"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="13"/>
+        <CursorPos X="45" Y="28"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="15" HistoryIndex="14">
+      <Position1>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="7" Column="12" TopLine="5"/>
+      </Position1>
+      <Position2>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="4"/>
+      </Position2>
+      <Position3>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="64" TopLine="42"/>
+      </Position3>
+      <Position4>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="10" Column="28"/>
+      </Position4>
+      <Position5>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="12" Column="19"/>
+      </Position5>
+      <Position6>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="18" Column="23" TopLine="6"/>
+      </Position6>
+      <Position7>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="20" Column="6"/>
+      </Position7>
+      <Position8>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Column="26"/>
+      </Position8>
+      <Position9>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="67" Column="19" TopLine="46"/>
+      </Position9>
+      <Position10>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="40" Column="6" TopLine="22"/>
+      </Position10>
+      <Position11>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="31" Column="7" TopLine="21"/>
+      </Position11>
+      <Position12>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="25" Column="54" TopLine="25"/>
+      </Position12>
+      <Position13>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="36" Column="46" TopLine="19"/>
+      </Position13>
+      <Position14>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="6" TopLine="45"/>
+      </Position14>
+      <Position15>
+        <Filename Value="bludisko.lpr"/>
+        <Caret Line="25" Column="7" TopLine="17"/>
+      </Position15>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="bludisko.lpr"/>
+        <Line Value="68"/>
+      </Item1>
+    </BreakPoints>
+  </Debugging>
+</CONFIG>
