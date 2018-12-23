@@ -1,0 +1,9 @@
+container:
+  image: node:latest
+deploy_task:
+  only_if: $BRANCH == "master"
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  script: yarn deploy
