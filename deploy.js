@@ -24,6 +24,7 @@ Promise.all(files_copying).then(
         // deleteRemote: true              // delete existing files at destination before uploading
     }
 
+    console.log(config);
  
      
     // use with promises
