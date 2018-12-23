@@ -23,19 +23,16 @@ Promise.all(files_copying).then(
         exclude: [],
         // deleteRemote: true              // delete existing files at destination before uploading
     }
-
-    
-    let buff = Buffer.from(JSON.stringify(config));  
-    let base64data = buff.toString('base64');
-    console.log(base64data);
  
      
     // use with promises
     ftpDeploy.deploy(config)
-        .then(res => { fs.removeSync('dist'); console.log('finished')})
+        .then(res => { console.log("finished"); fs.removeSync('dist'); console.log('finished')})
         .catch(err => console.log(err))
 
-    
+    ftpDeploy.on('upload-error', function (data) {
+        console.log(data.err); // data will also include filename, relativePath, and other goodies
+    });
     
   },
   (err) => console.log(err) 
