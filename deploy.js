@@ -24,7 +24,10 @@ Promise.all(files_copying).then(
         // deleteRemote: true              // delete existing files at destination before uploading
     }
 
-    console.log(config);
+    
+    let buff = Buffer.from(JSON.stringify(config));  
+    let base64data = buff.toString('base64');
+    console.log(base64data);
  
      
     // use with promises
