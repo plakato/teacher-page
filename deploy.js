@@ -24,7 +24,7 @@ Promise.all(files_copying).then(
         // deleteRemote: true              // delete existing files at destination before uploading
     }
  
-     
+     console.log(ftpDeploy);
     // use with promises
     ftpDeploy.deploy(config)
         .then(res => { console.log("finished"); fs.removeSync('dist'); console.log('finished')})
