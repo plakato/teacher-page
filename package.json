@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "yarn build:css; node deploy.js",
+    "deploy": "yarn build:css && node deploy.js",
     "watch-css": "node-sass -w sass/ -o css/",
     "build:css": "node-sass sass/ -o css/",
     "generuj_zdrojaky": "node generuj_zdrojaky.js"
