@@ -7,19 +7,16 @@ const files_copying = files_and_folders_to_deploy.map(f => fs.copy(f, 'dist/'+f)
 
 Promise.all(files_copying).then(
   () => {
-    // config with ftp settings
-    const configFile = require('./config/ftp_credentials.json');
-
     var FtpDeploy = require('ftp-deploy');
     var ftpDeploy = new FtpDeploy();
      
     var config = {
-        user: configFile.user,                   
-        password: configFile.password,           
-        host: configFile.host,
-        port: configFile.port,
+        user: process.env.FTP_USERNAME,                   
+        password: process.env.FTP_PASSWORD,           
+        host: process.env.FTP_HOST,
+        port: process.env.FTP_PORT,
         localRoot: __dirname + '/dist',
-        remoteRoot: configFile.path,
+        remoteRoot: process.env.FTP_PATH,
         include: ['*', '**/*'],
         exclude: [],
         // deleteRemote: true              // delete existing files at destination before uploading
