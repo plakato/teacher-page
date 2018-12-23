@@ -1,3 +1,4 @@
+console.log("deploying started");
 // copy dist files
 const fs = require('fs-extra');
 
@@ -7,6 +8,7 @@ const files_copying = files_and_folders_to_deploy.map(f => fs.copy(f, 'dist/'+f)
 
 Promise.all(files_copying).then(
   () => {
+    console.log("copied to dist");
     var FtpDeploy = require('ftp-deploy');
     var ftpDeploy = new FtpDeploy();
      
