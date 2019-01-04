@@ -142,6 +142,8 @@
             <li>Vyhľadávanie ciest v PID</li>
             <li>Investičný poradca</li>
             <li>Riešiteľ Lloydovej 15-tky</li>
+            <li>Míny</li>
+            <li>Prevody veľkých čísel</li>
           </ul>
         </p>
       </section>
@@ -597,8 +599,34 @@
             </section>
             <section>
                 <h4>4.1.2019</h4>
-                <p>Rekurzia + BFS.
-                </p>                  
+                <p>Ukážeme si BFS.
+                </p>          
+                <h5>Cesta kráľom</h5>  
+                <p>Úlohou je nájsť dĺžku najkratšej cesty kráľom do zadaného cieľa, ktorá neprechádza cez prekážky.
+                  Program dostane na vstupe: pozíciu kráľa, pozíciu cieľa, počet prekážok a ich pozície.
+                  Na výstup vypíše najmenší potrebný počet krokov, ktoré musí kráľ vykonať aby sa dostal do cieľa.
+                  <br>Príklad vstupu: <br> <code>
+                      3 3<br>
+                      6 6<br>
+                      4<br>
+                      3 4<br>
+                      5 5<br>
+                      4 5<br>
+                      6 5<br></code>
+                  Ktorý odpovedá nasledujúcej šachovnici (červené prekážky, K-kráľ, C-cieľ):<br>
+                  <img src="images/sachovnica.png" alt="sachovnica"> <br>
+                  Odpovedajúci výstup je 5 krokov.
+                  Pozor na prípady, kedy sa do cieľa vôbec nedá dostať!
+                </p>      
+                <h5>Domino</h5>
+                <p>Program vypíše dĺžku najdlhšej možnej rady, akú je možné zostaviť zo zadaných kociek domina.
+                  Kocky domina majú dvojice hodnôt z rozsahu 1-20 a kociek je max 20. Kocky je možné otáčať pri pripájaní.
+                  Na vstupe bude počet kociek a následne ich hodnoty.
+                  <br>Príklad vstupu: <code>5  1 2  1 2  2 3  2 17  2 17</code>
+                  <br>Výstup: <code>5</code>
+                  <br>Najdlhšia rada môže vyzerať napr. takto: <code>2-1 1-2 2-17 17-2 2-3</code>
+                </p>
+                <p><a href="zdrojaky/04_01_2019.html">Zdrojáky z hodiny</a></p>         
             </section>
             <section>
                 <h4>11.1.2019</h4>
@@ -607,7 +635,11 @@
                 Nie je ale problém venovať sa aj niečomu, čo vás zaujíma nad rámec cvičenia.
                 </p>  
                 <p>Témy od vás:</p>
-                <p> <i>Zatiaľ žiadne.</i> </p>    
+                <p> 
+                  <ul>
+                    <li>BFS/DFS</li>
+                  </ul>
+                </p>    
                 <p>Ak mi nič nenapíšete (resp. vo zvyšku času), chcela by som vám ukázať používanie verzovacieho
                   systému (git), ktorý môžete využiť pri písaní zápočtového programu a prípadne si urobiť 
                   ešte nejakú zložitejšiu úlohu. Určite si ešte ukážeme riešenie poslednej domácej úlohy a 
